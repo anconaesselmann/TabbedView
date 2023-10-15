@@ -50,7 +50,7 @@ public struct TabbedView<Path, Content>: View where Path: TabPath, Content: View
         self.init(tabs: tabs, selected: selected, behaviours: tabBehaviours, onNavigation: onNavigation)
     }
 
-    private let borderColor: Color = Color("inactiveTab")
+    private let borderColor: Color = Colors.inactiveTab
 
     public var body: some View {
         if isScrolling {
@@ -73,8 +73,8 @@ public struct TabbedView<Path, Content>: View where Path: TabPath, Content: View
                                 selected = tab
                             }
                         }
-                    }.background(Color("interimGapTabs"))
-                }.background(Color("inactiveTab"))
+                    }.background(Colors.interimGapTabs)
+                }.background(Colors.inactiveTab)
                 onNavigation(selected)
                 Spacer()
             }
@@ -90,7 +90,7 @@ public struct TabbedView<Path, Content>: View where Path: TabPath, Content: View
                         selected = tab
                     }
                 }
-            }.background(Color("interimGapTabs"))
+            }.background(Colors.interimGapTabs)
             onNavigation(selected)
         }
     }

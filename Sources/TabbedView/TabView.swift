@@ -51,8 +51,8 @@ public struct TabView<Path>: View where Path: TabPath {
                         }
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color("inactiveTab"))
-                        .foregroundColor(Color("text.disabled"))
+                        .background(Colors.inactiveTab)
+                        .foregroundColor(Colors.textDisabled)
                 } else {
                     Text(path.title)
                         .lineLimit(1)
@@ -61,7 +61,7 @@ public struct TabView<Path>: View where Path: TabPath {
                         }
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color(hovering ? "hoverTab" : "inactiveTab"))
+                        .background(hovering ? Colors.hoverTab : Colors.inactiveTab)
                         .onTapGesture {
                             didSelect(path)
                         }
