@@ -42,7 +42,7 @@ public struct TabView<Path>: View where Path: TabPath {
                         }
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-//                        .background(Color.detailBackground)
+                        .background(Colors.activeTab)
                 } else if !isEnabled {
                     Text(path.title)
                         .lineLimit(1)

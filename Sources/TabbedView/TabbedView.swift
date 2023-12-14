@@ -81,9 +81,31 @@ public struct TabbedView<Path, Content>: View where Path: TabPath, Content: View
         }
     }
 
+    private(set) var isShowingTopSpacer: Bool = false
+
+    public func showTopSpacer() -> Self {
+        var copy = self
+        copy.isShowingTopSpacer = true
+        return copy
+    }
+
+    private(set) var isShowingBottomSpacer: Bool = false
+
+    public func showBottomSpacer() -> Self {
+        var copy = self
+        copy.isShowingBottomSpacer = true
+        return copy
+    }
+
     @ViewBuilder
     internal var staticView: some View {
         VStack(alignment: .leading, spacing: 0) {
+            if isShowingTopSpacer {
+                Spacer()
+                    .frame(height: 1)
+                    .frame(maxWidth: .infinity)
+                    .background(Colors.interimGapTabs)
+            }
             HStack(spacing: 1) {
                 ForEach(tabs) { path in
                     TabView(path: path, isEnabled: path.isEnabled, tabIsHidden: tabs.count <= 1, selected: $selected, isScrolling: isScrolling, tabsFillWidth: tabsFillWidth) { tab in
@@ -91,6 +113,12 @@ public struct TabbedView<Path, Content>: View where Path: TabPath, Content: View
                     }
                 }
             }.background(Colors.interimGapTabs)
+            if isShowingBottomSpacer {
+                Spacer()
+                    .frame(height: 1)
+                    .frame(maxWidth: .infinity)
+                    .background(Colors.interimGapTabs)
+            }
             onNavigation(selected)
         }
     }
